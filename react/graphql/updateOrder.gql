@@ -1,8 +1,0 @@
-mutation updateOrder($orderFormId: ID, $orderItems: [ItemInput]){
-	updateItems(orderFormId: $orderFormId, orderItems: $orderItems){
-    items {
-      id
-      name
-    }
-  }
-}

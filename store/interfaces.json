@@ -1,5 +1,6 @@
 {
-  "MinicartEdit": {
-    "component": "App"
+  "vertical-slider": {
+    "component": "App",
+    "composition": "children"
   }
 }

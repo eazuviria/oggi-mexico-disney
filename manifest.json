@@ -1,8 +1,8 @@
 {
   "vendor": "street47",
-  "name": "minicart-edit",
+  "name": "vertical-slider",
   "version": "0.0.1",
-  "title": "47streets_minicart-edit",
+  "title": "47streets_vertical-slider",
   "description": "Made with create-react-library",
   "vtexComponentsEnabled": true,
   "defaultLocale": "pt-BR",
@@ -17,7 +17,8 @@
     "vtex.order-manager": "0.x",
     "vtex.store-resources": "0.x",
     "vtex.checkout-graphql": "0.x",
-    "vtex.search-graphql": "0.x"
+    "vtex.search-graphql": "0.x",
+    "vtex.store-components": "3.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

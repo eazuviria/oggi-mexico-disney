@@ -2,9 +2,9 @@
   "name": "47street_components",
   "version": "1.0.0",
   "description": "Made with create-react-library",
-  "author": "arielabaruffaldi",
+  "author": "eazuviria",
   "license": "MIT",
-  "repository": "arielabaruffaldi/47street_components",
+  "repository": "eazuviria/47street_components",
   "main": "dist/index.js",
   "module": "dist/47street_components.esm.js",
   "typings": "dist/index.d.ts",
@@ -46,5 +46,8 @@
   "files": [
     "dist",
     "src"
-  ]
+  ],
+  "dependencies": {
+    "swiper": "7.0.0"
+  }
 }
