@@ -48,6 +48,7 @@
     "src"
   ],
   "dependencies": {
+    "@types/swiper": "^5.4.3",
     "swiper": "7.0.0"
   }
 }
