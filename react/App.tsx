@@ -19,10 +19,40 @@ SwiperCore.use([EffectFade, Mousewheel, Navigation, Pagination, Controller]);
 const App = ({ children }: PropsWithChildren<any>) => {
   const handles = useCssHandles(CSS_HANDLES)
   const [swiper, setSwiper] = useState<SwiperCore>();
+  const [scrollTop, setScrollTop] = useState(0);
 
   const slideTo = (index: number) => swiper?.slideTo(index);
 
   const [sliderRef, visible] = useOnScreen({ threshold: 0 })
+
+  function toggleMenuVisibility(hide: boolean) {
+    const menuEl = Array.from(document.getElementsByClassName('vtex-flex-layout-0-x-flexRow--desk-row-bottom') as HTMLCollectionOf<HTMLElement>)[0] || null;
+    let parent = menuEl.parentElement;
+    if (hide) {
+      if (parent) {
+        parent.style.pointerEvents = "none";
+      }
+      menuEl.style.opacity = "0";
+    } else {
+      if (parent) {
+        parent.style.pointerEvents = "auto";
+      }
+      menuEl.style.opacity = "1";
+    }
+  }
+
+  useEffect(() => {
+    const onScroll = (e: any) => {
+      setScrollTop(e.target.documentElement.scrollTop);
+    };
+    if (window.innerWidth > 1024) {
+      toggleMenuVisibility(scrollTop >= (window.innerHeight / 3))
+      window.addEventListener("scroll", onScroll);
+    }
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
+
 
   useEffect(() => {
     if (visible) {
