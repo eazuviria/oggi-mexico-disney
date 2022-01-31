@@ -62,7 +62,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
   }, [visible])
 
   async function loadStyles() {
-    const loadStyle = await sessionStorage.getItem("loadedSwiperJs");
+    const loadStyle = sessionStorage.getItem("loadedSwiperJs");
     if (!loadStyle) {
       var link = document.createElement("link");
       link.href = "https://street47.vteximg.com.br/arquivos/swiper.global.css";
@@ -70,7 +70,8 @@ const App = ({ children }: PropsWithChildren<any>) => {
       link.rel = "stylesheet";
       link.media = "screen,print";
       document.getElementsByTagName("head")[0].appendChild(link);
-      await sessionStorage.setItem("loadedSwiperJs", "true")
+      sessionStorage.setItem("loadedSwiperJs", "true");
+      console.log("Carga exitosamente los estilos del swiper")
     }
   }
 
