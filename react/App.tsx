@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactElement, useEffect, useState } from "react";
+import React, { PropsWithChildren, ReactElement, useContext, useEffect, useState } from "react";
 import { useCssHandles } from 'vtex.css-handles'
 import SwiperCore, {
   EffectFade,
@@ -8,6 +8,8 @@ import SwiperCore, {
   Controller
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { GeneralContext, GeneralProvider } from './store/context/GeneralContext'
+
 
 // import './styles.css';
 // import './styles/App.global.css';
@@ -20,6 +22,9 @@ const App = ({ children }: PropsWithChildren<any>) => {
   const handles = useCssHandles(CSS_HANDLES)
   const [swiper, setSwiper] = useState<SwiperCore>();
   const [scrollTop, setScrollTop] = useState(0);
+
+  const { dispatch: generalDispatch, state: generalState } = useContext(GeneralContext)
+
 
   const slideTo = (index: number) => swiper?.slideTo(index);
 
@@ -61,16 +66,15 @@ const App = ({ children }: PropsWithChildren<any>) => {
     }
   }, [visible])
 
-  async function loadStyles() {
-    const loadStyle = sessionStorage.getItem("loadedSwiperJs");
-    if (!loadStyle) {
+  function loadStyles() {
+    if (!generalState.loadStyle) {
       var link = document.createElement("link");
       link.href = "https://street47.vteximg.com.br/arquivos/swiper.global.css";
       link.type = "text/css";
       link.rel = "stylesheet";
       link.media = "screen,print";
       document.getElementsByTagName("head")[0].appendChild(link);
-      sessionStorage.setItem("loadedSwiperJs", "true");
+      generalDispatch({ type: 'SET_LOAD_STYLE', payload: true });
       console.log("Carga exitosamente los estilos del swiper")
     }
   }
@@ -79,7 +83,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
     loadStyles()
   }, [])
 
-  return window && <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
+  return <GeneralProvider> <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
     <Swiper
       direction={"vertical"}
       slidesPerView={1}
@@ -104,6 +108,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
       {children.map((item: ReactElement, index: number) => <SwiperSlide className={handles['Slide--vertical-container']} key={index}>{item}</SwiperSlide>)}
     </Swiper>
   </div>
+  </GeneralProvider>
 }
 
 export default App
