@@ -9,10 +9,10 @@ import SwiperCore, {
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import './styles.css';
+// import './styles.css';
 // import './styles/App.global.css';
 import { useOnScreen } from "./hooks/useOnScreen";
-const CSS_HANDLES = ['Slider--vertical-container', 'Bullet--vertical-active', "Bullet--vertical"]
+const CSS_HANDLES = ['Slider--vertical-container', 'Slide--vertical-container', 'Bullet--vertical-active', "Bullet--vertical"]
 
 SwiperCore.use([EffectFade, Mousewheel, Navigation, Pagination, Controller]);
 
@@ -61,11 +61,12 @@ const App = ({ children }: PropsWithChildren<any>) => {
     }
   }, [visible])
 
-  return <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
+  return window && <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
     <Swiper
       direction={"vertical"}
       slidesPerView={1}
       autoHeight
+      // height={window.innerHeight}
       onSwiper={setSwiper}
       controller={{ control: swiper }}
       mousewheel={{
@@ -82,7 +83,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
       touchReleaseOnEdges
       className={handles['Slider--vertical-container']}
     >
-      {children.map((item: ReactElement, index: number) => <SwiperSlide key={index}>{item}</SwiperSlide>)}
+      {children.map((item: ReactElement, index: number) => <SwiperSlide className={handles['Slide--vertical-container']} key={index}>{item}</SwiperSlide>)}
     </Swiper>
   </div>
 }
