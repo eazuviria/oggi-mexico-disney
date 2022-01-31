@@ -61,8 +61,8 @@ const App = ({ children }: PropsWithChildren<any>) => {
     }
   }, [visible])
 
-  useEffect(() => {
-    const loadStyle = sessionStorage.getItem("loadedSwiperJs");
+  async function loadStyles() {
+    const loadStyle = await sessionStorage.getItem("loadedSwiperJs");
     if (!loadStyle) {
       var link = document.createElement("link");
       link.href = "https://street47.vteximg.com.br/arquivos/swiper.global.css";
@@ -70,8 +70,12 @@ const App = ({ children }: PropsWithChildren<any>) => {
       link.rel = "stylesheet";
       link.media = "screen,print";
       document.getElementsByTagName("head")[0].appendChild(link);
-      sessionStorage.setItem("loadedSwiperJs", "true")
+      await sessionStorage.setItem("loadedSwiperJs", "true")
     }
+  }
+
+  useEffect(() => {
+    loadStyles()
   }, [])
 
   return window && <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
