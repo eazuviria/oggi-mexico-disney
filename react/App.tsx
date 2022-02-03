@@ -9,7 +9,7 @@ import SwiperCore, {
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// import './styles.css';
+import './styles.css';
 // import './styles/App.global.css';
 import { useOnScreen } from "./hooks/useOnScreen";
 const CSS_HANDLES = ['Slider--vertical-container', 'Slide--vertical-container', 'Bullet--vertical-active', "Bullet--vertical"]
@@ -65,7 +65,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
 
   function loadStyles() {
     var link = document.createElement("link");
-    link.href = "https://street47.vteximg.com.br/arquivos/swiper.global.css";
+    link.href = "https://street47.vteximg.com.br/arquivos/swiper.css";
     link.type = "text/css";
     link.rel = "stylesheet";
     link.media = "screen,print";
