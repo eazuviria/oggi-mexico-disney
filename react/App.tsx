@@ -27,6 +27,19 @@ const App = ({ children }: PropsWithChildren<any>) => {
 
   const [sliderRef, visible] = useOnScreen({ threshold: 0 })
 
+  function toggleMobileWhiteMenuVisibility(hide: boolean) {
+    const menuWhiteEl = Array.from(document.getElementsByClassName('vtex-flex-layout-0-x-flexRow--main-header-mobile-home-black') as HTMLCollectionOf<HTMLElement>)[0] || null;
+    const menuWhiteChildrenEl = menuWhiteEl?.children[0] as HTMLElement;
+    if (menuWhiteEl && menuWhiteChildrenEl) {
+      if (hide) {
+        menuWhiteChildrenEl.style.transform = "translateY(0%)";
+      } else {
+        menuWhiteChildrenEl.style.transform = "translateY(-100%)";
+      }
+    }
+    return null;
+  }
+
   function toggleWhiteMenuVisibility(hide: boolean) {
     const menuWhiteEl = Array.from(document.getElementsByClassName('vtex-flex-layout-0-x-flexColChild--header-desktop-not-home') as HTMLCollectionOf<HTMLElement>)[0] || null;
     menuWhiteEl.style.transition = "all 350ms ease-in-out";
@@ -35,6 +48,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
     } else {
       menuWhiteEl.style.transform = "translateY(-100%)";
     }
+    return null;
   }
 
   function toggleMenuVisibility(hide: boolean) {
@@ -58,10 +72,12 @@ const App = ({ children }: PropsWithChildren<any>) => {
     const onScroll = (e: any) => {
       setScrollTop(e.target.documentElement.scrollTop);
     };
+    window.addEventListener("scroll", onScroll);
     if (window.innerWidth > 1024) {
-      window.addEventListener("scroll", onScroll);
       toggleMenuVisibility(scrollTop >= (window.innerHeight / 3))
       toggleWhiteMenuVisibility(scrollTop >= (window.innerHeight - 250))
+    } else {
+      toggleMobileWhiteMenuVisibility(scrollTop >= (window.innerHeight - 250))
     }
 
     return () => window.removeEventListener("scroll", onScroll);
