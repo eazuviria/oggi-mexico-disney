@@ -27,9 +27,20 @@ const App = ({ children }: PropsWithChildren<any>) => {
 
   const [sliderRef, visible] = useOnScreen({ threshold: 0 })
 
+  function toggleWhiteMenuVisibility(hide: boolean) {
+    const menuWhiteEl = Array.from(document.getElementsByClassName('vtex-flex-layout-0-x-flexColChild--header-desktop-not-home') as HTMLCollectionOf<HTMLElement>)[0] || null;
+    menuWhiteEl.style.transition = "all 350ms ease-in-out";
+    if (hide) {
+      menuWhiteEl.style.transform = "translateY(0%)";
+    } else {
+      menuWhiteEl.style.transform = "translateY(-100%)";
+    }
+  }
+
   function toggleMenuVisibility(hide: boolean) {
     const menuEl = Array.from(document.getElementsByClassName('vtex-flex-layout-0-x-flexRow--desk-row-bottom') as HTMLCollectionOf<HTMLElement>)[0] || null;
     let parent = menuEl.parentElement;
+
     if (hide) {
       if (parent) {
         parent.style.pointerEvents = "none";
@@ -48,8 +59,9 @@ const App = ({ children }: PropsWithChildren<any>) => {
       setScrollTop(e.target.documentElement.scrollTop);
     };
     if (window.innerWidth > 1024) {
-      toggleMenuVisibility(scrollTop >= (window.innerHeight / 3))
       window.addEventListener("scroll", onScroll);
+      toggleMenuVisibility(scrollTop >= (window.innerHeight / 3))
+      toggleWhiteMenuVisibility(scrollTop >= (window.innerHeight - 250))
     }
 
     return () => window.removeEventListener("scroll", onScroll);
@@ -74,7 +86,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
   }
 
   useEffect(() => {
-    loadStyles()
+    loadStyles();
   }, [])
 
   return <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
