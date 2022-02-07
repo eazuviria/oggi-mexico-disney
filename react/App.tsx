@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactElement, useEffect, useState } from "react";
+import React, { PropsWithChildren, ReactElement, useEffect, useLayoutEffect, useState } from "react";
 import { useCssHandles } from 'vtex.css-handles'
 import SwiperCore, {
   EffectFade,
@@ -101,9 +101,9 @@ const App = ({ children }: PropsWithChildren<any>) => {
     console.log("Carga exitosamente los estilos del swiper")
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     loadStyles();
-  }, [])
+  }, []);
 
   return <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
     <Swiper
