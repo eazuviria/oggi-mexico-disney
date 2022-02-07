@@ -98,7 +98,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
     link.rel = "stylesheet";
     link.media = "screen,print";
     document.getElementsByTagName("head")[0].appendChild(link);
-    console.log("Carga exitosamente los estilos del swiper")
+    console.log("Carga exitosamente los estilos del swiper layout")
   }
 
   useLayoutEffect(() => {
