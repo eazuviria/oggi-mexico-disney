@@ -106,10 +106,11 @@ const App = ({ children }: PropsWithChildren<any>) => {
   }, []);
 
   return <div style={{ width: "100vw", height: "100vh" }} ref={sliderRef}>
-    <Swiper
+    {children.length > 1 ? <Swiper
       direction={"vertical"}
       slidesPerView={1}
       autoHeight
+      watchOverflow
       // height={window.innerHeight}
       onSwiper={setSwiper}
       controller={{ control: swiper }}
@@ -128,7 +129,7 @@ const App = ({ children }: PropsWithChildren<any>) => {
       className={handles['Slider--vertical-container']}
     >
       {children.map((item: ReactElement, index: number) => <SwiperSlide className={handles['Slide--vertical-container']} key={index}>{item}</SwiperSlide>)}
-    </Swiper>
+    </Swiper> : children[0]}
   </div>
 }
 
