@@ -1,13 +1,13 @@
-# 47street_components
+# oggimexico_components
 
 > Made with create-react-library
 
-[![NPM](https://img.shields.io/npm/v/47street_components.svg)](https://www.npmjs.com/package/47street_components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/oggimexico_components.svg)](https://www.npmjs.com/package/oggimexico_components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-yarn add 47street_components
+yarn add oggimexico_components
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ yarn add 47street_components
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from '47street_components'
+import MyComponent from 'oggimexico_components'
 
 class Example extends Component {
   render() {

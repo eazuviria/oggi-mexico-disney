@@ -1,8 +1,8 @@
 {
-  "vendor": "street47",
-  "name": "vertical-slider",
-  "version": "0.0.17",
-  "title": "47streets_vertical-slider",
+  "vendor": "oggimexico",
+  "name": "oggi-mexico-disney",
+  "version": "0.0.1",
+  "title": "oggi_mexico_disney",
   "description": "Made with create-react-library",
   "vtexComponentsEnabled": true,
   "defaultLocale": "pt-BR",

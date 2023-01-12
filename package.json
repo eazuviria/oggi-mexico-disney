@@ -1,12 +1,12 @@
 {
-  "name": "47street_components",
+  "name": "oggi_components",
   "version": "1.0.0",
   "description": "Made with create-react-library",
   "author": "eazuviria",
   "license": "MIT",
-  "repository": "eazuviria/47street_components",
+  "repository": "eazuviria/oggi_components",
   "main": "dist/index.js",
-  "module": "dist/47street_components.esm.js",
+  "module": "dist/oggi_components.esm.js",
   "typings": "dist/index.d.ts",
   "engines": {
     "node": ">=10"
