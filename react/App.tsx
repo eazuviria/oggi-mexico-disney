@@ -55,7 +55,7 @@ const App = ({ }: PropsWithChildren<any>) => {
     waitForElm("#gallery-layout-container").then(() => {
       setTimeout(() => {
         replaceElements()
-      }, 2000);
+      }, 1000);
     })
   }, [])
 
