@@ -1,7 +1,7 @@
 {
   "vendor": "oggimexico",
   "name": "oggi-mexico-disney",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "title": "oggi_mexico_disney",
   "description": "Made with create-react-library",
   "vtexComponentsEnabled": true,
