@@ -12,7 +12,8 @@ SwiperCore.use([EffectFade, Mousewheel, Navigation, Pagination, Controller]);
 const App = ({ }: PropsWithChildren<any>) => {
 
   function replaceElements() {
-    let isMexico = window.location.pathname === "/mexico-campeon"
+    // change the path here to validate
+    let isMexico = window.location.pathname === "/denim-lovers"
 
     let gallery = document.querySelector('#gallery-layout-container');
     let imgVertical1 = document.getElementsByClassName(isMexico ? 'vtex-store-components-3-x-imageElement--landing_mexico_vertical_1' : 'vtex-store-components-3-x-imageElement--landing_disney_small_1');
